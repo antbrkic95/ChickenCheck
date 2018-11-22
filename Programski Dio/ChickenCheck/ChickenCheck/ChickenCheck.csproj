@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8BF34874-E9BC-46C2-9180-4460BAF4A48D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ChickenCheck</RootNamespace>
+    <AssemblyName>ChickenCheck</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ChickenCheck logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.105.2\lib\net451\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.105.2\lib\net451\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.105.2\lib\net451\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AzuriranjeSirovina.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaterijeKaveza.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChickenCheckMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChickenCheckMain.Designer.cs">
+      <DependentUpon>ChickenCheckMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChickenCheckEFModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChickenCheckEFModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChickenCheckEFModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChickenCheckEFModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChickenCheckEFModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Cijepljenje.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cjepivo.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DodavanjeCjepiva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodavanjeCjepiva.Designer.cs">
+      <DependentUpon>DodavanjeCjepiva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodavanjeKorisnika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodavanjeKorisnika.Designer.cs">
+      <DependentUpon>DodavanjeKorisnika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodavanjeSirovine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodavanjeSirovine.Designer.cs">
+      <DependentUpon>DodavanjeSirovine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodavanjeTurnusa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodavanjeTurnusa.Designer.cs">
+      <DependentUpon>DodavanjeTurnusa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DohvacanjePodataka.cs" />
+    <Compile Include="EvidentiranjeCijepljenja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EvidentiranjeCijepljenja.Designer.cs">
+      <DependentUpon>EvidentiranjeCijepljenja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EvidentiranjeJaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EvidentiranjeJaja.Designer.cs">
+      <DependentUpon>EvidentiranjeJaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodavanjeHrane.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodavanjeHrane.Designer.cs">
+      <DependentUpon>DodavanjeHrane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormaZaUnosNarudzbi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaZaUnosNovogKupca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Funkcionalnost.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Jaja.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KokosiTurnus.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KomparatorJednakostiCjepiva.cs" />
+    <Compile Include="KomparatorJednakostiFunkcionalnosti.cs" />
+    <Compile Include="KontrolerIzmjeneSirovina.cs" />
+    <Compile Include="Korisnik.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kupac.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogAkcija.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoginEkran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginEkran.Designer.cs">
+      <DependentUpon>LoginEkran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Narudzba.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PristupBaziPodataka.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\AzuriranjeSirovinaProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\BaterijeKavezaProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\CijepljenjeProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\CjepivoProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\FunkcionalnostProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\JajaProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\KokosiTurnusProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\KorisnikProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\KupacProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\NarudzbaProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\ReceptProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\SirovinaProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\StanjeNarudzbeProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\StavkeNarudzbeProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\UnositeljJajaProsirenje.cs" />
+    <Compile Include="ProsirenjaParcijalnihKlasa\UnosUginulihProsirenje.cs" />
+    <Compile Include="Recept.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sirovina.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StanjeNarudzbe.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StavkeNarudzbe.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnositeljJaja.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormaZaUnosStavkiNarudzbe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaZaUnosStavkiNarudzbe.Designer.cs">
+      <DependentUpon>FormaZaUnosStavkiNarudzbe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnosUginulih.cs">
+      <DependentUpon>ChickenCheckEFModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZapisGrafa.cs" />
+    <EmbeddedResource Include="ChickenCheckMain.resx">
+      <DependentUpon>ChickenCheckMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodavanjeCjepiva.resx">
+      <DependentUpon>DodavanjeCjepiva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodavanjeHrane.resx">
+      <DependentUpon>DodavanjeHrane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodavanjeKorisnika.resx">
+      <DependentUpon>DodavanjeKorisnika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodavanjeSirovine.resx">
+      <DependentUpon>DodavanjeSirovine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodavanjeTurnusa.resx">
+      <DependentUpon>DodavanjeTurnusa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EvidentiranjeCijepljenja.resx">
+      <DependentUpon>EvidentiranjeCijepljenja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EvidentiranjeJaja.resx">
+      <DependentUpon>EvidentiranjeJaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormaZaUnosNarudzbi.resx">
+      <DependentUpon>FormaZaUnosNarudzbi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormaZaUnosNovogKupca.resx">
+      <DependentUpon>FormaZaUnosNovogKupca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginEkran.resx">
+      <DependentUpon>LoginEkran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormaZaUnosStavkiNarudzbe.resx">
+      <DependentUpon>FormaZaUnosStavkiNarudzbe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="ChickenCheckEFModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ChickenCheckEFModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ChickenCheckEFModel.edmx.diagram">
+      <DependentUpon>ChickenCheckEFModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\BaterijeKaveza.datasource" />
+    <None Include="Properties\DataSources\Cjepivo.datasource" />
+    <None Include="Properties\DataSources\Jaja1.datasource" />
+    <None Include="Properties\DataSources\KokosiTurnus.datasource" />
+    <None Include="Properties\DataSources\Korisnik.datasource" />
+    <None Include="Properties\DataSources\Narudzba2.datasource" />
+    <None Include="Properties\DataSources\Sirovina.datasource" />
+    <None Include="Properties\DataSources\StavkeNarudzbe1.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ChickenCheck logo.ico" />
+    <Content Include="ChickenCheckEFModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChickenCheckEFModel.edmx</DependentUpon>
+      <LastGenOutput>ChickenCheckEFModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ChickenCheckEFModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChickenCheckEFModel.edmx</DependentUpon>
+      <LastGenOutput>ChickenCheckEFModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

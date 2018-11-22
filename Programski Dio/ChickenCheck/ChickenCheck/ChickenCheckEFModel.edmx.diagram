@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ee18f8ad97604fdd80a7084c822f7b66" Name="Diagram1" ZoomLevel="124">
+        <EntityTypeShape EntityType="ChickenCheckEFModel.AzuriranjeSirovina" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.BaterijeKaveza" Width="1.5" PointX="1.375" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.Cijepljenje" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.Cjepivo" Width="1.5" PointX="2.875" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.Funkcionalnost" Width="1.5" PointX="5.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.Jaja" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.KokosiTurnus" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.Korisnik" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.Kupac" Width="1.5" PointX="5.25" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.LogAkcija" Width="1.5" PointX="5.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.Narudzba" Width="1.5" PointX="8.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.Recept" Width="1.5" PointX="7.125" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.Sirovina" Width="1.5" PointX="5.125" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.StanjeNarudzbe" Width="1.5" PointX="10.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.StavkeNarudzbe" Width="1.5" PointX="12.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.UnositeljJaja" Width="1.5" PointX="5.875" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChickenCheckEFModel.UnosUginulih" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_AzuriranjeSirovina_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_AzuriranjeSirovina_Sirovina" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_UnosUginulih_BaterijeKaveza" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_Cijepljenje_Cjepivo" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_Cijepljenje_KokosiTurnus" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_Jaja_KokosiTurnus" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_UnositeljJaja_Jaja" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_LogAkcija_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_UnositeljJaja_Korisnik" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="ChickenCheckEFModel.FK_UnosUginulih_Korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_Narudzba_Kupac" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_Narudzba_StanjeNarudzbe" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_StavkeNarudzbe_Narudzba" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_Sastojak_Smjese" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.FK_Sirovina_Smjesa" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.BaterijeTurnusa" ManuallyRouted="false" />
+        <AssociationConnector Association="ChickenCheckEFModel.OvlastiKorisnika" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

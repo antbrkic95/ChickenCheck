@@ -1,0 +1,1180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ChickenCheckEFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AzuriranjeSirovina">
+          <Key>
+            <PropertyRef Name="idZapisa" />
+          </Key>
+          <Property Name="idZapisa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sirovinaId" Type="int" Nullable="false" />
+          <Property Name="korisnikId" Type="int" Nullable="false" />
+          <Property Name="datum" Type="date" Nullable="false" />
+          <Property Name="kolicina" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BaterijeKaveza">
+          <Key>
+            <PropertyRef Name="idBaterije" />
+          </Key>
+          <Property Name="idBaterije" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brojKokosi" Type="int" Nullable="false" />
+          <Property Name="brojKavezaBaterije" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BaterijeTurnusa">
+          <Key>
+            <PropertyRef Name="idTurnusa" />
+            <PropertyRef Name="idBaterije" />
+          </Key>
+          <Property Name="idTurnusa" Type="int" Nullable="false" />
+          <Property Name="idBaterije" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cijepljenje">
+          <Key>
+            <PropertyRef Name="turnusId" />
+            <PropertyRef Name="cijepivoId" />
+          </Key>
+          <Property Name="turnusId" Type="int" Nullable="false" />
+          <Property Name="cijepivoId" Type="int" Nullable="false" />
+          <Property Name="datumCijepljenja" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cjepivo">
+          <Key>
+            <PropertyRef Name="idCjepiva" />
+          </Key>
+          <Property Name="idCjepiva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazivCjepiva" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="vrstaCjepiva" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="opis" Type="nvarchar" MaxLength="255" />
+          <Property Name="zapisNeaktivan" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Funkcionalnost">
+          <Key>
+            <PropertyRef Name="idFunkcionalnosti" />
+          </Key>
+          <Property Name="idFunkcionalnosti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazivFunkcionalnosti" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Jaja">
+          <Key>
+            <PropertyRef Name="idDnevneSerije" />
+          </Key>
+          <Property Name="idDnevneSerije" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="klasa" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="brojPrikupljenih" Type="int" Nullable="false" />
+          <Property Name="turnusId" Type="int" Nullable="false" />
+          <Property Name="datumPrikupljanja" Type="date" Nullable="false" />
+          <Property Name="zapisNekativan" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KokosiTurnus">
+          <Key>
+            <PropertyRef Name="idTurnusa" />
+          </Key>
+          <Property Name="idTurnusa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datumNabavkeTurnusa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="zapisNeaktivan" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="idKorisnika" />
+          </Key>
+          <Property Name="ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idKorisnika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="korisnickoIme" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lozinka" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="zapisNeaktivan" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kupac">
+          <Key>
+            <PropertyRef Name="idKupca" />
+          </Key>
+          <Property Name="idKupca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="opis" Type="nvarchar" MaxLength="250" />
+          <Property Name="kontakt" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogAkcija">
+          <Key>
+            <PropertyRef Name="idZapisa" />
+          </Key>
+          <Property Name="idZapisa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="korisnikId" Type="int" Nullable="false" />
+          <Property Name="opisAkcije" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="datumVrijeme" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Narudzba">
+          <Key>
+            <PropertyRef Name="idNarudzbe" />
+          </Key>
+          <Property Name="idNarudzbe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datumNarudzbe" Type="date" Nullable="false" />
+          <Property Name="datumIsporuke" Type="date" />
+          <Property Name="kupacId" Type="int" Nullable="false" />
+          <Property Name="stanjeNarudzbeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OvlastiKorisnika">
+          <Key>
+            <PropertyRef Name="idKorisnika" />
+            <PropertyRef Name="idFunkcionalnosti" />
+          </Key>
+          <Property Name="idKorisnika" Type="int" Nullable="false" />
+          <Property Name="idFunkcionalnosti" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Recept">
+          <Key>
+            <PropertyRef Name="receptGlavniSastojakId" />
+            <PropertyRef Name="receptSastojak" />
+          </Key>
+          <Property Name="receptGlavniSastojakId" Type="int" Nullable="false" />
+          <Property Name="receptSastojak" Type="int" Nullable="false" />
+          <Property Name="postotak" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sirovina">
+          <Key>
+            <PropertyRef Name="idSirovine" />
+          </Key>
+          <Property Name="idSirovine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazivSirovine" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="kolicina" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="opis" Type="nvarchar" MaxLength="255" />
+          <Property Name="zapisNeaktivan" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StanjeNarudzbe">
+          <Key>
+            <PropertyRef Name="idStanja" />
+          </Key>
+          <Property Name="idStanja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazivStanja" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StavkeNarudzbe">
+          <Key>
+            <PropertyRef Name="idStavke" />
+          </Key>
+          <Property Name="idStavke" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="narudzbaId" Type="int" Nullable="false" />
+          <Property Name="kolicina" Type="int" Nullable="false" />
+          <Property Name="klasa" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="cijena" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnositeljJaja">
+          <Key>
+            <PropertyRef Name="idZapisa" />
+          </Key>
+          <Property Name="idZapisa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dnevnaSerijaId" Type="int" Nullable="false" />
+          <Property Name="korisnikId" Type="int" Nullable="false" />
+          <Property Name="datum" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnosUginulih">
+          <Key>
+            <PropertyRef Name="idZapisa" />
+          </Key>
+          <Property Name="idZapisa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datumUnosa" Type="date" Nullable="false" />
+          <Property Name="baterijaKavezaId" Type="int" Nullable="false" />
+          <Property Name="brojUginulihKokosi" Type="int" Nullable="false" />
+          <Property Name="korisnikId" Type="int" Nullable="false" />
+          <Property Name="uzrok" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_AzuriranjeSirovina_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="AzuriranjeSirovina" Type="Self.AzuriranjeSirovina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="idKorisnika" />
+            </Principal>
+            <Dependent Role="AzuriranjeSirovina">
+              <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AzuriranjeSirovina_Sirovina">
+          <End Role="Sirovina" Type="Self.Sirovina" Multiplicity="1" />
+          <End Role="AzuriranjeSirovina" Type="Self.AzuriranjeSirovina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirovina">
+              <PropertyRef Name="idSirovine" />
+            </Principal>
+            <Dependent Role="AzuriranjeSirovina">
+              <PropertyRef Name="sirovinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BaterijeTurnusa_BaterijeKaveza">
+          <End Role="BaterijeKaveza" Type="Self.BaterijeKaveza" Multiplicity="1" />
+          <End Role="BaterijeTurnusa" Type="Self.BaterijeTurnusa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BaterijeKaveza">
+              <PropertyRef Name="idBaterije" />
+            </Principal>
+            <Dependent Role="BaterijeTurnusa">
+              <PropertyRef Name="idBaterije" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BaterijeTurnusa_KokosiTurnus">
+          <End Role="KokosiTurnus" Type="Self.KokosiTurnus" Multiplicity="1" />
+          <End Role="BaterijeTurnusa" Type="Self.BaterijeTurnusa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KokosiTurnus">
+              <PropertyRef Name="idTurnusa" />
+            </Principal>
+            <Dependent Role="BaterijeTurnusa">
+              <PropertyRef Name="idTurnusa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cijepljenje_Cjepivo">
+          <End Role="Cjepivo" Type="Self.Cjepivo" Multiplicity="1" />
+          <End Role="Cijepljenje" Type="Self.Cijepljenje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cjepivo">
+              <PropertyRef Name="idCjepiva" />
+            </Principal>
+            <Dependent Role="Cijepljenje">
+              <PropertyRef Name="cijepivoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cijepljenje_KokosiTurnus">
+          <End Role="KokosiTurnus" Type="Self.KokosiTurnus" Multiplicity="1" />
+          <End Role="Cijepljenje" Type="Self.Cijepljenje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KokosiTurnus">
+              <PropertyRef Name="idTurnusa" />
+            </Principal>
+            <Dependent Role="Cijepljenje">
+              <PropertyRef Name="turnusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jaja_KokosiTurnus">
+          <End Role="KokosiTurnus" Type="Self.KokosiTurnus" Multiplicity="1" />
+          <End Role="Jaja" Type="Self.Jaja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KokosiTurnus">
+              <PropertyRef Name="idTurnusa" />
+            </Principal>
+            <Dependent Role="Jaja">
+              <PropertyRef Name="turnusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogAkcija_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="LogAkcija" Type="Self.LogAkcija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="idKorisnika" />
+            </Principal>
+            <Dependent Role="LogAkcija">
+              <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Narudzba_Kupac">
+          <End Role="Kupac" Type="Self.Kupac" Multiplicity="1" />
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupac">
+              <PropertyRef Name="idKupca" />
+            </Principal>
+            <Dependent Role="Narudzba">
+              <PropertyRef Name="kupacId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Narudzba_StanjeNarudzbe">
+          <End Role="StanjeNarudzbe" Type="Self.StanjeNarudzbe" Multiplicity="1" />
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StanjeNarudzbe">
+              <PropertyRef Name="idStanja" />
+            </Principal>
+            <Dependent Role="Narudzba">
+              <PropertyRef Name="stanjeNarudzbeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OvlastiKorisnika_Funkcionalnost">
+          <End Role="Funkcionalnost" Type="Self.Funkcionalnost" Multiplicity="1" />
+          <End Role="OvlastiKorisnika" Type="Self.OvlastiKorisnika" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funkcionalnost">
+              <PropertyRef Name="idFunkcionalnosti" />
+            </Principal>
+            <Dependent Role="OvlastiKorisnika">
+              <PropertyRef Name="idFunkcionalnosti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OvlastiKorisnika_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="OvlastiKorisnika" Type="Self.OvlastiKorisnika" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="idKorisnika" />
+            </Principal>
+            <Dependent Role="OvlastiKorisnika">
+              <PropertyRef Name="idKorisnika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sastojak_Smjese">
+          <End Role="Sirovina" Type="Self.Sirovina" Multiplicity="1" />
+          <End Role="Recept" Type="Self.Recept" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirovina">
+              <PropertyRef Name="idSirovine" />
+            </Principal>
+            <Dependent Role="Recept">
+              <PropertyRef Name="receptSastojak" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sirovina_Smjesa">
+          <End Role="Sirovina" Type="Self.Sirovina" Multiplicity="1" />
+          <End Role="Recept" Type="Self.Recept" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirovina">
+              <PropertyRef Name="idSirovine" />
+            </Principal>
+            <Dependent Role="Recept">
+              <PropertyRef Name="receptGlavniSastojakId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StavkeNarudzbe_Narudzba">
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
+          <End Role="StavkeNarudzbe" Type="Self.StavkeNarudzbe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Narudzba">
+              <PropertyRef Name="idNarudzbe" />
+            </Principal>
+            <Dependent Role="StavkeNarudzbe">
+              <PropertyRef Name="narudzbaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnositeljJaja_Jaja">
+          <End Role="Jaja" Type="Self.Jaja" Multiplicity="1" />
+          <End Role="UnositeljJaja" Type="Self.UnositeljJaja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jaja">
+              <PropertyRef Name="idDnevneSerije" />
+            </Principal>
+            <Dependent Role="UnositeljJaja">
+              <PropertyRef Name="dnevnaSerijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnositeljJaja_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="UnositeljJaja" Type="Self.UnositeljJaja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="idKorisnika" />
+            </Principal>
+            <Dependent Role="UnositeljJaja">
+              <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnosUginulih_BaterijeKaveza">
+          <End Role="BaterijeKaveza" Type="Self.BaterijeKaveza" Multiplicity="1" />
+          <End Role="UnosUginulih" Type="Self.UnosUginulih" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BaterijeKaveza">
+              <PropertyRef Name="idBaterije" />
+            </Principal>
+            <Dependent Role="UnosUginulih">
+              <PropertyRef Name="baterijaKavezaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnosUginulih_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="UnosUginulih" Type="Self.UnosUginulih" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="idKorisnika" />
+            </Principal>
+            <Dependent Role="UnosUginulih">
+              <PropertyRef Name="korisnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ChickenCheckEFModelStoreContainer">
+          <EntitySet Name="AzuriranjeSirovina" EntityType="Self.AzuriranjeSirovina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BaterijeKaveza" EntityType="Self.BaterijeKaveza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BaterijeTurnusa" EntityType="Self.BaterijeTurnusa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cijepljenje" EntityType="Self.Cijepljenje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cjepivo" EntityType="Self.Cjepivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Funkcionalnost" EntityType="Self.Funkcionalnost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jaja" EntityType="Self.Jaja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KokosiTurnus" EntityType="Self.KokosiTurnus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kupac" EntityType="Self.Kupac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogAkcija" EntityType="Self.LogAkcija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Narudzba" EntityType="Self.Narudzba" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OvlastiKorisnika" EntityType="Self.OvlastiKorisnika" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recept" EntityType="Self.Recept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sirovina" EntityType="Self.Sirovina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StanjeNarudzbe" EntityType="Self.StanjeNarudzbe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StavkeNarudzbe" EntityType="Self.StavkeNarudzbe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnositeljJaja" EntityType="Self.UnositeljJaja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnosUginulih" EntityType="Self.UnosUginulih" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AzuriranjeSirovina_Korisnik" Association="Self.FK_AzuriranjeSirovina_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="AzuriranjeSirovina" EntitySet="AzuriranjeSirovina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AzuriranjeSirovina_Sirovina" Association="Self.FK_AzuriranjeSirovina_Sirovina">
+            <End Role="Sirovina" EntitySet="Sirovina" />
+            <End Role="AzuriranjeSirovina" EntitySet="AzuriranjeSirovina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BaterijeTurnusa_BaterijeKaveza" Association="Self.FK_BaterijeTurnusa_BaterijeKaveza">
+            <End Role="BaterijeKaveza" EntitySet="BaterijeKaveza" />
+            <End Role="BaterijeTurnusa" EntitySet="BaterijeTurnusa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BaterijeTurnusa_KokosiTurnus" Association="Self.FK_BaterijeTurnusa_KokosiTurnus">
+            <End Role="KokosiTurnus" EntitySet="KokosiTurnus" />
+            <End Role="BaterijeTurnusa" EntitySet="BaterijeTurnusa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cijepljenje_Cjepivo" Association="Self.FK_Cijepljenje_Cjepivo">
+            <End Role="Cjepivo" EntitySet="Cjepivo" />
+            <End Role="Cijepljenje" EntitySet="Cijepljenje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cijepljenje_KokosiTurnus" Association="Self.FK_Cijepljenje_KokosiTurnus">
+            <End Role="KokosiTurnus" EntitySet="KokosiTurnus" />
+            <End Role="Cijepljenje" EntitySet="Cijepljenje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jaja_KokosiTurnus" Association="Self.FK_Jaja_KokosiTurnus">
+            <End Role="KokosiTurnus" EntitySet="KokosiTurnus" />
+            <End Role="Jaja" EntitySet="Jaja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogAkcija_Korisnik" Association="Self.FK_LogAkcija_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="LogAkcija" EntitySet="LogAkcija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Narudzba_Kupac" Association="Self.FK_Narudzba_Kupac">
+            <End Role="Kupac" EntitySet="Kupac" />
+            <End Role="Narudzba" EntitySet="Narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Narudzba_StanjeNarudzbe" Association="Self.FK_Narudzba_StanjeNarudzbe">
+            <End Role="StanjeNarudzbe" EntitySet="StanjeNarudzbe" />
+            <End Role="Narudzba" EntitySet="Narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OvlastiKorisnika_Funkcionalnost" Association="Self.FK_OvlastiKorisnika_Funkcionalnost">
+            <End Role="Funkcionalnost" EntitySet="Funkcionalnost" />
+            <End Role="OvlastiKorisnika" EntitySet="OvlastiKorisnika" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OvlastiKorisnika_Korisnik" Association="Self.FK_OvlastiKorisnika_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="OvlastiKorisnika" EntitySet="OvlastiKorisnika" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sastojak_Smjese" Association="Self.FK_Sastojak_Smjese">
+            <End Role="Sirovina" EntitySet="Sirovina" />
+            <End Role="Recept" EntitySet="Recept" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sirovina_Smjesa" Association="Self.FK_Sirovina_Smjesa">
+            <End Role="Sirovina" EntitySet="Sirovina" />
+            <End Role="Recept" EntitySet="Recept" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StavkeNarudzbe_Narudzba" Association="Self.FK_StavkeNarudzbe_Narudzba">
+            <End Role="Narudzba" EntitySet="Narudzba" />
+            <End Role="StavkeNarudzbe" EntitySet="StavkeNarudzbe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnositeljJaja_Jaja" Association="Self.FK_UnositeljJaja_Jaja">
+            <End Role="Jaja" EntitySet="Jaja" />
+            <End Role="UnositeljJaja" EntitySet="UnositeljJaja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnositeljJaja_Korisnik" Association="Self.FK_UnositeljJaja_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="UnositeljJaja" EntitySet="UnositeljJaja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnosUginulih_BaterijeKaveza" Association="Self.FK_UnosUginulih_BaterijeKaveza">
+            <End Role="BaterijeKaveza" EntitySet="BaterijeKaveza" />
+            <End Role="UnosUginulih" EntitySet="UnosUginulih" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnosUginulih_Korisnik" Association="Self.FK_UnosUginulih_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="UnosUginulih" EntitySet="UnosUginulih" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ChickenCheckEFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AzuriranjeSirovina">
+          <Key>
+            <PropertyRef Name="idZapisa" />
+          </Key>
+          <Property Name="idZapisa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="kolicina" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_AzuriranjeSirovina_Korisnik" FromRole="AzuriranjeSirovina" ToRole="Korisnik" />
+          <NavigationProperty Name="Sirovina" Relationship="Self.FK_AzuriranjeSirovina_Sirovina" FromRole="AzuriranjeSirovina" ToRole="Sirovina" />
+        </EntityType>
+        <EntityType Name="BaterijeKaveza">
+          <Key>
+            <PropertyRef Name="idBaterije" />
+          </Key>
+          <Property Name="idBaterije" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brojKokosi" Type="Int32" Nullable="false" />
+          <Property Name="brojKavezaBaterije" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UnosUginulih" Relationship="Self.FK_UnosUginulih_BaterijeKaveza" FromRole="BaterijeKaveza" ToRole="UnosUginulih" />
+          <NavigationProperty Name="KokosiTurnus" Relationship="Self.BaterijeTurnusa" FromRole="BaterijeKaveza" ToRole="KokosiTurnus" />
+        </EntityType>
+        <EntityType Name="Cijepljenje">
+          <Key>
+            <PropertyRef Name="turnusId" />
+            <PropertyRef Name="cijepivoId" />
+          </Key>
+          <Property Name="turnusId" Type="Int32" Nullable="false" />
+          <Property Name="cijepivoId" Type="Int32" Nullable="false" />
+          <Property Name="datumCijepljenja" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Cjepivo" Relationship="Self.FK_Cijepljenje_Cjepivo" FromRole="Cijepljenje" ToRole="Cjepivo" />
+          <NavigationProperty Name="KokosiTurnus" Relationship="Self.FK_Cijepljenje_KokosiTurnus" FromRole="Cijepljenje" ToRole="KokosiTurnus" />
+        </EntityType>
+        <EntityType Name="Cjepivo">
+          <Key>
+            <PropertyRef Name="idCjepiva" />
+          </Key>
+          <Property Name="idCjepiva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazivCjepiva" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="vrstaCjepiva" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="zapisNeaktivan" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cijepljenje" Relationship="Self.FK_Cijepljenje_Cjepivo" FromRole="Cjepivo" ToRole="Cijepljenje" />
+        </EntityType>
+        <EntityType Name="Funkcionalnost">
+          <Key>
+            <PropertyRef Name="idFunkcionalnosti" />
+          </Key>
+          <Property Name="idFunkcionalnosti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazivFunkcionalnosti" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.OvlastiKorisnika" FromRole="Funkcionalnost" ToRole="Korisnik" />
+        </EntityType>
+        <EntityType Name="Jaja">
+          <Key>
+            <PropertyRef Name="idDnevneSerije" />
+          </Key>
+          <Property Name="idDnevneSerije" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="klasa" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="brojPrikupljenih" Type="Int32" Nullable="false" />
+          <Property Name="datumPrikupljanja" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="zapisNekativan" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="KokosiTurnus" Relationship="Self.FK_Jaja_KokosiTurnus" FromRole="Jaja" ToRole="KokosiTurnus" />
+          <NavigationProperty Name="UnositeljJaja" Relationship="Self.FK_UnositeljJaja_Jaja" FromRole="Jaja" ToRole="UnositeljJaja" />
+        </EntityType>
+        <EntityType Name="KokosiTurnus">
+          <Key>
+            <PropertyRef Name="idTurnusa" />
+          </Key>
+          <Property Name="idTurnusa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datumNabavkeTurnusa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="zapisNeaktivan" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cijepljenje" Relationship="Self.FK_Cijepljenje_KokosiTurnus" FromRole="KokosiTurnus" ToRole="Cijepljenje" />
+          <NavigationProperty Name="Jaja" Relationship="Self.FK_Jaja_KokosiTurnus" FromRole="KokosiTurnus" ToRole="Jaja" />
+          <NavigationProperty Name="BaterijeKaveza" Relationship="Self.BaterijeTurnusa" FromRole="KokosiTurnus" ToRole="BaterijeKaveza" />
+        </EntityType>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="idKorisnika" />
+          </Key>
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idKorisnika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="korisnickoIme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zapisNeaktivan" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AzuriranjeSirovina" Relationship="Self.FK_AzuriranjeSirovina_Korisnik" FromRole="Korisnik" ToRole="AzuriranjeSirovina" />
+          <NavigationProperty Name="LogAkcija" Relationship="Self.FK_LogAkcija_Korisnik" FromRole="Korisnik" ToRole="LogAkcija" />
+          <NavigationProperty Name="UnositeljJaja" Relationship="Self.FK_UnositeljJaja_Korisnik" FromRole="Korisnik" ToRole="UnositeljJaja" />
+          <NavigationProperty Name="UnosUginulih" Relationship="Self.FK_UnosUginulih_Korisnik" FromRole="Korisnik" ToRole="UnosUginulih" />
+          <NavigationProperty Name="Funkcionalnost" Relationship="Self.OvlastiKorisnika" FromRole="Korisnik" ToRole="Funkcionalnost" />
+        </EntityType>
+        <EntityType Name="Kupac">
+          <Key>
+            <PropertyRef Name="idKupca" />
+          </Key>
+          <Property Name="idKupca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="kontakt" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Narudzba" Relationship="Self.FK_Narudzba_Kupac" FromRole="Kupac" ToRole="Narudzba" />
+        </EntityType>
+        <EntityType Name="LogAkcija">
+          <Key>
+            <PropertyRef Name="idZapisa" />
+          </Key>
+          <Property Name="idZapisa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="opisAkcije" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="datumVrijeme" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_LogAkcija_Korisnik" FromRole="LogAkcija" ToRole="Korisnik" />
+        </EntityType>
+        <EntityType Name="Narudzba">
+          <Key>
+            <PropertyRef Name="idNarudzbe" />
+          </Key>
+          <Property Name="idNarudzbe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datumNarudzbe" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="datumIsporuke" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Kupac" Relationship="Self.FK_Narudzba_Kupac" FromRole="Narudzba" ToRole="Kupac" />
+          <NavigationProperty Name="StanjeNarudzbe" Relationship="Self.FK_Narudzba_StanjeNarudzbe" FromRole="Narudzba" ToRole="StanjeNarudzbe" />
+          <NavigationProperty Name="StavkeNarudzbe" Relationship="Self.FK_StavkeNarudzbe_Narudzba" FromRole="Narudzba" ToRole="StavkeNarudzbe" />
+        </EntityType>
+        <EntityType Name="Recept">
+          <Key>
+            <PropertyRef Name="receptGlavniSastojakId" />
+            <PropertyRef Name="receptSastojak" />
+          </Key>
+          <Property Name="receptGlavniSastojakId" Type="Int32" Nullable="false" />
+          <Property Name="receptSastojak" Type="Int32" Nullable="false" />
+          <Property Name="postotak" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Sirovina" Relationship="Self.FK_Sastojak_Smjese" FromRole="Recept" ToRole="Sirovina" />
+          <NavigationProperty Name="Sirovina1" Relationship="Self.FK_Sirovina_Smjesa" FromRole="Recept" ToRole="Sirovina" />
+        </EntityType>
+        <EntityType Name="Sirovina">
+          <Key>
+            <PropertyRef Name="idSirovine" />
+          </Key>
+          <Property Name="idSirovine" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazivSirovine" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kolicina" Type="Decimal" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="zapisNeaktivan" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AzuriranjeSirovina" Relationship="Self.FK_AzuriranjeSirovina_Sirovina" FromRole="Sirovina" ToRole="AzuriranjeSirovina" />
+          <NavigationProperty Name="Recept" Relationship="Self.FK_Sastojak_Smjese" FromRole="Sirovina" ToRole="Recept" />
+          <NavigationProperty Name="Recept1" Relationship="Self.FK_Sirovina_Smjesa" FromRole="Sirovina" ToRole="Recept" />
+        </EntityType>
+        <EntityType Name="StanjeNarudzbe">
+          <Key>
+            <PropertyRef Name="idStanja" />
+          </Key>
+          <Property Name="idStanja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazivStanja" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Narudzba" Relationship="Self.FK_Narudzba_StanjeNarudzbe" FromRole="StanjeNarudzbe" ToRole="Narudzba" />
+        </EntityType>
+        <EntityType Name="StavkeNarudzbe">
+          <Key>
+            <PropertyRef Name="idStavke" />
+          </Key>
+          <Property Name="idStavke" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kolicina" Type="Int32" Nullable="false" />
+          <Property Name="klasa" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cijena" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Narudzba" Relationship="Self.FK_StavkeNarudzbe_Narudzba" FromRole="StavkeNarudzbe" ToRole="Narudzba" />
+        </EntityType>
+        <EntityType Name="UnositeljJaja">
+          <Key>
+            <PropertyRef Name="idZapisa" />
+          </Key>
+          <Property Name="idZapisa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datum" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Jaja" Relationship="Self.FK_UnositeljJaja_Jaja" FromRole="UnositeljJaja" ToRole="Jaja" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_UnositeljJaja_Korisnik" FromRole="UnositeljJaja" ToRole="Korisnik" />
+        </EntityType>
+        <EntityType Name="UnosUginulih">
+          <Key>
+            <PropertyRef Name="idZapisa" />
+          </Key>
+          <Property Name="idZapisa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datumUnosa" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="brojUginulihKokosi" Type="Int32" Nullable="false" />
+          <Property Name="uzrok" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BaterijeKaveza" Relationship="Self.FK_UnosUginulih_BaterijeKaveza" FromRole="UnosUginulih" ToRole="BaterijeKaveza" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.FK_UnosUginulih_Korisnik" FromRole="UnosUginulih" ToRole="Korisnik" />
+        </EntityType>
+        <Association Name="FK_AzuriranjeSirovina_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="AzuriranjeSirovina" Type="Self.AzuriranjeSirovina" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_AzuriranjeSirovina_Sirovina">
+          <End Role="Sirovina" Type="Self.Sirovina" Multiplicity="1" />
+          <End Role="AzuriranjeSirovina" Type="Self.AzuriranjeSirovina" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_UnosUginulih_BaterijeKaveza">
+          <End Role="BaterijeKaveza" Type="Self.BaterijeKaveza" Multiplicity="1" />
+          <End Role="UnosUginulih" Type="Self.UnosUginulih" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Cijepljenje_Cjepivo">
+          <End Role="Cjepivo" Type="Self.Cjepivo" Multiplicity="1" />
+          <End Role="Cijepljenje" Type="Self.Cijepljenje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cjepivo">
+              <PropertyRef Name="idCjepiva" />
+            </Principal>
+            <Dependent Role="Cijepljenje">
+              <PropertyRef Name="cijepivoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cijepljenje_KokosiTurnus">
+          <End Role="KokosiTurnus" Type="Self.KokosiTurnus" Multiplicity="1" />
+          <End Role="Cijepljenje" Type="Self.Cijepljenje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KokosiTurnus">
+              <PropertyRef Name="idTurnusa" />
+            </Principal>
+            <Dependent Role="Cijepljenje">
+              <PropertyRef Name="turnusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jaja_KokosiTurnus">
+          <End Role="KokosiTurnus" Type="Self.KokosiTurnus" Multiplicity="1" />
+          <End Role="Jaja" Type="Self.Jaja" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_UnositeljJaja_Jaja">
+          <End Role="Jaja" Type="Self.Jaja" Multiplicity="1" />
+          <End Role="UnositeljJaja" Type="Self.UnositeljJaja" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_LogAkcija_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="LogAkcija" Type="Self.LogAkcija" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_UnositeljJaja_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="UnositeljJaja" Type="Self.UnositeljJaja" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_UnosUginulih_Korisnik">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="UnosUginulih" Type="Self.UnosUginulih" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Narudzba_Kupac">
+          <End Role="Kupac" Type="Self.Kupac" Multiplicity="1" />
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Narudzba_StanjeNarudzbe">
+          <End Role="StanjeNarudzbe" Type="Self.StanjeNarudzbe" Multiplicity="1" />
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_StavkeNarudzbe_Narudzba">
+          <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
+          <End Role="StavkeNarudzbe" Type="Self.StavkeNarudzbe" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Sastojak_Smjese">
+          <End Role="Sirovina" Type="Self.Sirovina" Multiplicity="1" />
+          <End Role="Recept" Type="Self.Recept" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirovina">
+              <PropertyRef Name="idSirovine" />
+            </Principal>
+            <Dependent Role="Recept">
+              <PropertyRef Name="receptSastojak" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sirovina_Smjesa">
+          <End Role="Sirovina" Type="Self.Sirovina" Multiplicity="1" />
+          <End Role="Recept" Type="Self.Recept" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirovina">
+              <PropertyRef Name="idSirovine" />
+            </Principal>
+            <Dependent Role="Recept">
+              <PropertyRef Name="receptGlavniSastojakId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BaterijeTurnusa">
+          <End Role="BaterijeKaveza" Type="Self.BaterijeKaveza" Multiplicity="*" />
+          <End Role="KokosiTurnus" Type="Self.KokosiTurnus" Multiplicity="*" />
+        </Association>
+        <Association Name="OvlastiKorisnika">
+          <End Role="Funkcionalnost" Type="Self.Funkcionalnost" Multiplicity="*" />
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ChickenCheckEntiteti" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AzuriranjeSirovina" EntityType="Self.AzuriranjeSirovina" />
+          <EntitySet Name="BaterijeKaveza" EntityType="Self.BaterijeKaveza" />
+          <EntitySet Name="Cijepljenje" EntityType="Self.Cijepljenje" />
+          <EntitySet Name="Cjepivo" EntityType="Self.Cjepivo" />
+          <EntitySet Name="Funkcionalnost" EntityType="Self.Funkcionalnost" />
+          <EntitySet Name="Jaja" EntityType="Self.Jaja" />
+          <EntitySet Name="KokosiTurnus" EntityType="Self.KokosiTurnus" />
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" />
+          <EntitySet Name="Kupac" EntityType="Self.Kupac" />
+          <EntitySet Name="LogAkcija" EntityType="Self.LogAkcija" />
+          <EntitySet Name="Narudzba" EntityType="Self.Narudzba" />
+          <EntitySet Name="Recept" EntityType="Self.Recept" />
+          <EntitySet Name="Sirovina" EntityType="Self.Sirovina" />
+          <EntitySet Name="StanjeNarudzbe" EntityType="Self.StanjeNarudzbe" />
+          <EntitySet Name="StavkeNarudzbe" EntityType="Self.StavkeNarudzbe" />
+          <EntitySet Name="UnositeljJaja" EntityType="Self.UnositeljJaja" />
+          <EntitySet Name="UnosUginulih" EntityType="Self.UnosUginulih" />
+          <AssociationSet Name="FK_AzuriranjeSirovina_Korisnik" Association="Self.FK_AzuriranjeSirovina_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="AzuriranjeSirovina" EntitySet="AzuriranjeSirovina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AzuriranjeSirovina_Sirovina" Association="Self.FK_AzuriranjeSirovina_Sirovina">
+            <End Role="Sirovina" EntitySet="Sirovina" />
+            <End Role="AzuriranjeSirovina" EntitySet="AzuriranjeSirovina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnosUginulih_BaterijeKaveza" Association="Self.FK_UnosUginulih_BaterijeKaveza">
+            <End Role="BaterijeKaveza" EntitySet="BaterijeKaveza" />
+            <End Role="UnosUginulih" EntitySet="UnosUginulih" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cijepljenje_Cjepivo" Association="Self.FK_Cijepljenje_Cjepivo">
+            <End Role="Cjepivo" EntitySet="Cjepivo" />
+            <End Role="Cijepljenje" EntitySet="Cijepljenje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cijepljenje_KokosiTurnus" Association="Self.FK_Cijepljenje_KokosiTurnus">
+            <End Role="KokosiTurnus" EntitySet="KokosiTurnus" />
+            <End Role="Cijepljenje" EntitySet="Cijepljenje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jaja_KokosiTurnus" Association="Self.FK_Jaja_KokosiTurnus">
+            <End Role="KokosiTurnus" EntitySet="KokosiTurnus" />
+            <End Role="Jaja" EntitySet="Jaja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnositeljJaja_Jaja" Association="Self.FK_UnositeljJaja_Jaja">
+            <End Role="Jaja" EntitySet="Jaja" />
+            <End Role="UnositeljJaja" EntitySet="UnositeljJaja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogAkcija_Korisnik" Association="Self.FK_LogAkcija_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="LogAkcija" EntitySet="LogAkcija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnositeljJaja_Korisnik" Association="Self.FK_UnositeljJaja_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="UnositeljJaja" EntitySet="UnositeljJaja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnosUginulih_Korisnik" Association="Self.FK_UnosUginulih_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="UnosUginulih" EntitySet="UnosUginulih" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Narudzba_Kupac" Association="Self.FK_Narudzba_Kupac">
+            <End Role="Kupac" EntitySet="Kupac" />
+            <End Role="Narudzba" EntitySet="Narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Narudzba_StanjeNarudzbe" Association="Self.FK_Narudzba_StanjeNarudzbe">
+            <End Role="StanjeNarudzbe" EntitySet="StanjeNarudzbe" />
+            <End Role="Narudzba" EntitySet="Narudzba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StavkeNarudzbe_Narudzba" Association="Self.FK_StavkeNarudzbe_Narudzba">
+            <End Role="Narudzba" EntitySet="Narudzba" />
+            <End Role="StavkeNarudzbe" EntitySet="StavkeNarudzbe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sastojak_Smjese" Association="Self.FK_Sastojak_Smjese">
+            <End Role="Sirovina" EntitySet="Sirovina" />
+            <End Role="Recept" EntitySet="Recept" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sirovina_Smjesa" Association="Self.FK_Sirovina_Smjesa">
+            <End Role="Sirovina" EntitySet="Sirovina" />
+            <End Role="Recept" EntitySet="Recept" />
+          </AssociationSet>
+          <AssociationSet Name="BaterijeTurnusa" Association="Self.BaterijeTurnusa">
+            <End Role="BaterijeKaveza" EntitySet="BaterijeKaveza" />
+            <End Role="KokosiTurnus" EntitySet="KokosiTurnus" />
+          </AssociationSet>
+          <AssociationSet Name="OvlastiKorisnika" Association="Self.OvlastiKorisnika">
+            <End Role="Funkcionalnost" EntitySet="Funkcionalnost" />
+            <End Role="Korisnik" EntitySet="Korisnik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ChickenCheckEFModelStoreContainer" CdmEntityContainer="ChickenCheckEntiteti">
+          <EntitySetMapping Name="AzuriranjeSirovina">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.AzuriranjeSirovina">
+              <MappingFragment StoreEntitySet="AzuriranjeSirovina">
+                <ScalarProperty Name="idZapisa" ColumnName="idZapisa" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BaterijeKaveza">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.BaterijeKaveza">
+              <MappingFragment StoreEntitySet="BaterijeKaveza">
+                <ScalarProperty Name="idBaterije" ColumnName="idBaterije" />
+                <ScalarProperty Name="brojKokosi" ColumnName="brojKokosi" />
+                <ScalarProperty Name="brojKavezaBaterije" ColumnName="brojKavezaBaterije" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cijepljenje">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.Cijepljenje">
+              <MappingFragment StoreEntitySet="Cijepljenje">
+                <ScalarProperty Name="turnusId" ColumnName="turnusId" />
+                <ScalarProperty Name="cijepivoId" ColumnName="cijepivoId" />
+                <ScalarProperty Name="datumCijepljenja" ColumnName="datumCijepljenja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cjepivo">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.Cjepivo">
+              <MappingFragment StoreEntitySet="Cjepivo">
+                <ScalarProperty Name="idCjepiva" ColumnName="idCjepiva" />
+                <ScalarProperty Name="nazivCjepiva" ColumnName="nazivCjepiva" />
+                <ScalarProperty Name="vrstaCjepiva" ColumnName="vrstaCjepiva" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="zapisNeaktivan" ColumnName="zapisNeaktivan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Funkcionalnost">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.Funkcionalnost">
+              <MappingFragment StoreEntitySet="Funkcionalnost">
+                <ScalarProperty Name="idFunkcionalnosti" ColumnName="idFunkcionalnosti" />
+                <ScalarProperty Name="nazivFunkcionalnosti" ColumnName="nazivFunkcionalnosti" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jaja">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.Jaja">
+              <MappingFragment StoreEntitySet="Jaja">
+                <ScalarProperty Name="idDnevneSerije" ColumnName="idDnevneSerije" />
+                <ScalarProperty Name="klasa" ColumnName="klasa" />
+                <ScalarProperty Name="brojPrikupljenih" ColumnName="brojPrikupljenih" />
+                <ScalarProperty Name="datumPrikupljanja" ColumnName="datumPrikupljanja" />
+                <ScalarProperty Name="zapisNekativan" ColumnName="zapisNekativan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KokosiTurnus">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.KokosiTurnus">
+              <MappingFragment StoreEntitySet="KokosiTurnus">
+                <ScalarProperty Name="idTurnusa" ColumnName="idTurnusa" />
+                <ScalarProperty Name="datumNabavkeTurnusa" ColumnName="datumNabavkeTurnusa" />
+                <ScalarProperty Name="zapisNeaktivan" ColumnName="zapisNeaktivan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Korisnik">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.Korisnik">
+              <MappingFragment StoreEntitySet="Korisnik">
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="idKorisnika" ColumnName="idKorisnika" />
+                <ScalarProperty Name="korisnickoIme" ColumnName="korisnickoIme" />
+                <ScalarProperty Name="lozinka" ColumnName="lozinka" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="zapisNeaktivan" ColumnName="zapisNeaktivan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kupac">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.Kupac">
+              <MappingFragment StoreEntitySet="Kupac">
+                <ScalarProperty Name="idKupca" ColumnName="idKupca" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="kontakt" ColumnName="kontakt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogAkcija">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.LogAkcija">
+              <MappingFragment StoreEntitySet="LogAkcija">
+                <ScalarProperty Name="idZapisa" ColumnName="idZapisa" />
+                <ScalarProperty Name="opisAkcije" ColumnName="opisAkcije" />
+                <ScalarProperty Name="datumVrijeme" ColumnName="datumVrijeme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Narudzba">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.Narudzba">
+              <MappingFragment StoreEntitySet="Narudzba">
+                <ScalarProperty Name="idNarudzbe" ColumnName="idNarudzbe" />
+                <ScalarProperty Name="datumNarudzbe" ColumnName="datumNarudzbe" />
+                <ScalarProperty Name="datumIsporuke" ColumnName="datumIsporuke" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recept">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.Recept">
+              <MappingFragment StoreEntitySet="Recept">
+                <ScalarProperty Name="receptGlavniSastojakId" ColumnName="receptGlavniSastojakId" />
+                <ScalarProperty Name="receptSastojak" ColumnName="receptSastojak" />
+                <ScalarProperty Name="postotak" ColumnName="postotak" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sirovina">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.Sirovina">
+              <MappingFragment StoreEntitySet="Sirovina">
+                <ScalarProperty Name="idSirovine" ColumnName="idSirovine" />
+                <ScalarProperty Name="nazivSirovine" ColumnName="nazivSirovine" />
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="zapisNeaktivan" ColumnName="zapisNeaktivan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StanjeNarudzbe">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.StanjeNarudzbe">
+              <MappingFragment StoreEntitySet="StanjeNarudzbe">
+                <ScalarProperty Name="idStanja" ColumnName="idStanja" />
+                <ScalarProperty Name="nazivStanja" ColumnName="nazivStanja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StavkeNarudzbe">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.StavkeNarudzbe">
+              <MappingFragment StoreEntitySet="StavkeNarudzbe">
+                <ScalarProperty Name="idStavke" ColumnName="idStavke" />
+                <ScalarProperty Name="kolicina" ColumnName="kolicina" />
+                <ScalarProperty Name="klasa" ColumnName="klasa" />
+                <ScalarProperty Name="cijena" ColumnName="cijena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnositeljJaja">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.UnositeljJaja">
+              <MappingFragment StoreEntitySet="UnositeljJaja">
+                <ScalarProperty Name="idZapisa" ColumnName="idZapisa" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnosUginulih">
+            <EntityTypeMapping TypeName="ChickenCheckEFModel.UnosUginulih">
+              <MappingFragment StoreEntitySet="UnosUginulih">
+                <ScalarProperty Name="idZapisa" ColumnName="idZapisa" />
+                <ScalarProperty Name="datumUnosa" ColumnName="datumUnosa" />
+                <ScalarProperty Name="brojUginulihKokosi" ColumnName="brojUginulihKokosi" />
+                <ScalarProperty Name="uzrok" ColumnName="uzrok" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_AzuriranjeSirovina_Korisnik" TypeName="ChickenCheckEFModel.FK_AzuriranjeSirovina_Korisnik" StoreEntitySet="AzuriranjeSirovina">
+            <EndProperty Name="Korisnik">
+              <ScalarProperty Name="idKorisnika" ColumnName="korisnikId" />
+            </EndProperty>
+            <EndProperty Name="AzuriranjeSirovina">
+              <ScalarProperty Name="idZapisa" ColumnName="idZapisa" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_AzuriranjeSirovina_Sirovina" TypeName="ChickenCheckEFModel.FK_AzuriranjeSirovina_Sirovina" StoreEntitySet="AzuriranjeSirovina">
+            <EndProperty Name="Sirovina">
+              <ScalarProperty Name="idSirovine" ColumnName="sirovinaId" />
+            </EndProperty>
+            <EndProperty Name="AzuriranjeSirovina">
+              <ScalarProperty Name="idZapisa" ColumnName="idZapisa" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_UnosUginulih_BaterijeKaveza" TypeName="ChickenCheckEFModel.FK_UnosUginulih_BaterijeKaveza" StoreEntitySet="UnosUginulih">
+            <EndProperty Name="BaterijeKaveza">
+              <ScalarProperty Name="idBaterije" ColumnName="baterijaKavezaId" />
+            </EndProperty>
+            <EndProperty Name="UnosUginulih">
+              <ScalarProperty Name="idZapisa" ColumnName="idZapisa" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Jaja_KokosiTurnus" TypeName="ChickenCheckEFModel.FK_Jaja_KokosiTurnus" StoreEntitySet="Jaja">
+            <EndProperty Name="KokosiTurnus">
+              <ScalarProperty Name="idTurnusa" ColumnName="turnusId" />
+            </EndProperty>
+            <EndProperty Name="Jaja">
+              <ScalarProperty Name="idDnevneSerije" ColumnName="idDnevneSerije" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_UnositeljJaja_Jaja" TypeName="ChickenCheckEFModel.FK_UnositeljJaja_Jaja" StoreEntitySet="UnositeljJaja">
+            <EndProperty Name="Jaja">
+              <ScalarProperty Name="idDnevneSerije" ColumnName="dnevnaSerijaId" />
+            </EndProperty>
+            <EndProperty Name="UnositeljJaja">
+              <ScalarProperty Name="idZapisa" ColumnName="idZapisa" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_LogAkcija_Korisnik" TypeName="ChickenCheckEFModel.FK_LogAkcija_Korisnik" StoreEntitySet="LogAkcija">
+            <EndProperty Name="Korisnik">
+              <ScalarProperty Name="idKorisnika" ColumnName="korisnikId" />
+            </EndProperty>
+            <EndProperty Name="LogAkcija">
+              <ScalarProperty Name="idZapisa" ColumnName="idZapisa" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_UnositeljJaja_Korisnik" TypeName="ChickenCheckEFModel.FK_UnositeljJaja_Korisnik" StoreEntitySet="UnositeljJaja">
+            <EndProperty Name="Korisnik">
+              <ScalarProperty Name="idKorisnika" ColumnName="korisnikId" />
+            </EndProperty>
+            <EndProperty Name="UnositeljJaja">
+              <ScalarProperty Name="idZapisa" ColumnName="idZapisa" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_UnosUginulih_Korisnik" TypeName="ChickenCheckEFModel.FK_UnosUginulih_Korisnik" StoreEntitySet="UnosUginulih">
+            <EndProperty Name="Korisnik">
+              <ScalarProperty Name="idKorisnika" ColumnName="korisnikId" />
+            </EndProperty>
+            <EndProperty Name="UnosUginulih">
+              <ScalarProperty Name="idZapisa" ColumnName="idZapisa" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Narudzba_Kupac" TypeName="ChickenCheckEFModel.FK_Narudzba_Kupac" StoreEntitySet="Narudzba">
+            <EndProperty Name="Kupac">
+              <ScalarProperty Name="idKupca" ColumnName="kupacId" />
+            </EndProperty>
+            <EndProperty Name="Narudzba">
+              <ScalarProperty Name="idNarudzbe" ColumnName="idNarudzbe" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Narudzba_StanjeNarudzbe" TypeName="ChickenCheckEFModel.FK_Narudzba_StanjeNarudzbe" StoreEntitySet="Narudzba">
+            <EndProperty Name="StanjeNarudzbe">
+              <ScalarProperty Name="idStanja" ColumnName="stanjeNarudzbeId" />
+            </EndProperty>
+            <EndProperty Name="Narudzba">
+              <ScalarProperty Name="idNarudzbe" ColumnName="idNarudzbe" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_StavkeNarudzbe_Narudzba" TypeName="ChickenCheckEFModel.FK_StavkeNarudzbe_Narudzba" StoreEntitySet="StavkeNarudzbe">
+            <EndProperty Name="Narudzba">
+              <ScalarProperty Name="idNarudzbe" ColumnName="narudzbaId" />
+            </EndProperty>
+            <EndProperty Name="StavkeNarudzbe">
+              <ScalarProperty Name="idStavke" ColumnName="idStavke" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="BaterijeTurnusa" TypeName="ChickenCheckEFModel.BaterijeTurnusa" StoreEntitySet="BaterijeTurnusa">
+            <EndProperty Name="BaterijeKaveza">
+              <ScalarProperty Name="idBaterije" ColumnName="idBaterije" />
+            </EndProperty>
+            <EndProperty Name="KokosiTurnus">
+              <ScalarProperty Name="idTurnusa" ColumnName="idTurnusa" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="OvlastiKorisnika" TypeName="ChickenCheckEFModel.OvlastiKorisnika" StoreEntitySet="OvlastiKorisnika">
+            <EndProperty Name="Funkcionalnost">
+              <ScalarProperty Name="idFunkcionalnosti" ColumnName="idFunkcionalnosti" />
+            </EndProperty>
+            <EndProperty Name="Korisnik">
+              <ScalarProperty Name="idKorisnika" ColumnName="idKorisnika" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
